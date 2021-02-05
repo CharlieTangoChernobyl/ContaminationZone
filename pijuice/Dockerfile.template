@@ -5,7 +5,8 @@ FROM balenalib/%%BALENA_MACHINE_NAME%%-python:3-stretch-build
 RUN install_packages \
     pijuice-base \
     jq \
-    curl 
+    curl \
+    wget
 
 # Set our working directory
 WORKDIR /usr/src/app
