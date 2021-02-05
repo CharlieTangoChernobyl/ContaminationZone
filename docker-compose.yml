@@ -24,6 +24,3 @@ services:
     restart: always
     build: ./counter
     privileged: true
-    
-    version: "2.1"
-  
