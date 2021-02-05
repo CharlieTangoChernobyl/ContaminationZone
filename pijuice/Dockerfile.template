@@ -3,6 +3,7 @@
 FROM balenalib/%%BALENA_MACHINE_NAME%%-python:3-stretch-build
 
 RUN install_packages \
+    python3-urwid \
     pijuice-base \
     jq \
     curl \
