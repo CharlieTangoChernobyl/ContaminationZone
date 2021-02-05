@@ -24,3 +24,8 @@ services:
     restart: always
     build: ./counter
     privileged: true
+  wifi-repeater:
+   build: .
+   privileged: true
+   labels:
+     io.balena.features.dbus: '1'
