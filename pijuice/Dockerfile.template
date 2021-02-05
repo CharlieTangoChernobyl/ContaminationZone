@@ -2,7 +2,10 @@
 # see more about dockerfile templates here: https://www.balena.io/docs/learn/develop/dockerfile/
 FROM balenalib/%%BALENA_MACHINE_NAME%%-python:3-stretch-build
 
-RUN install_packages pijuice-base jq curl 
+RUN install_packages \
+    pijuice-base \
+    jq \
+    curl 
 
 # Set our working directory
 WORKDIR /usr/src/app
