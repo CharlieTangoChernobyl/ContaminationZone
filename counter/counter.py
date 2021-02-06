@@ -83,7 +83,8 @@ while True:
                 'measurement': 'balena-sense',
                 'fields': {
                     'cpm': int(len(counts)),
-                    'usvh': "{:.2f}".format(len(counts)*usvh_ratio)                   
+                    'usvh': "{:.2f}".format(len(counts)*usvh_ratio),
+                    'daily': "{:.2f}".format(len(counts)*daily_ratio)                    
                 }
             }
         ]
