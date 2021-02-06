@@ -1,0 +1,24 @@
+FROM balenalib/rpi-raspbian:stretch
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+  python3 \
+  dbus \
+  i2c-tools \
+  raspi-config \
+  systemd \
+  systemd-sysv \
+  pijuice-base=1.6 \
+  wget \
+  && wget -q -O - http://repo.mosquitto.org/debian/mosquitto-repo.gpg.key | apt-key add - \
+  && wget -q -O /etc/apt/sources.list.d/mosquitto-stretch.list http://repo.mosquitto.org/debian/mosquitto-stretch.list \
+  && apt-get install -y mosquitto mosquitto-clients \
+  && touch boot/config.txt \
+  && raspi-config nonint do_i2c 0
+
+ENV DBUS_SYSTEM_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket
+ENV INITSYSTEM=on
+ENV UDEV=1
+
+COPY . /.
+
+CMD bash entrypoint.sh
