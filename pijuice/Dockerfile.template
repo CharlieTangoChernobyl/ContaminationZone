@@ -10,7 +10,7 @@ RUN apt-get -y dist-upgrade
 RUN install_packages apt-utils
 RUN install_packages jq 
 RUN install_packages curl
-RUN install pijuice-base $HOME
+RUN apt-get install pijuice-base
 
 # Set our working directory
 WORKDIR /usr/src/app
