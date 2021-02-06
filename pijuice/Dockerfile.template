@@ -2,8 +2,11 @@
 # see more about dockerfile templates here: https://www.balena.io/docs/learn/develop/dockerfile/
 FROM balenalib/%%BALENA_MACHINE_NAME%%-python:3-stretch-build
 
+RUN sed -i '/jessie-updates/{s/^/#/}' /etc/apt/sources.list
+
+RUN apt-get update
+
 RUN install_packages \
-    python3-urwid \
     pijuice-base \
     jq \
     curl \
