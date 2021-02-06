@@ -5,8 +5,10 @@ FROM balenalib/%%BALENA_MACHINE_NAME%%-python:3-stretch-build
 RUN sed -i '/jessie-updates/{s/^/#/}' /etc/apt/sources.list
 
 RUN apt-get update
+RUN apt-get -y upgrade
+RUN apt-get -y dist-upgrade
 
-RUN install_packages pijuice-gui
+RUN install_packages pijuice-base
 RUN install_packages jq 
 RUN install_packages curl
 
