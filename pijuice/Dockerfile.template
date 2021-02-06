@@ -10,7 +10,7 @@ RUN apt-get -y dist-upgrade
 
 RUN TEMP_DEB="$(mktemp)" &&
 RUN wget -O "$TEMP_DEB" 'https://github.com/PiSupply/PiJuice/raw/master/Software/Install/pijuice-gui_1.6_all.deb' &&
-sudo dpkg -i "$TEMP_DEB"
+RUN dpkg -i "$TEMP_DEB"
 RUN rm -f "$TEMP_DEB"
 
 RUN install_packages jq 
