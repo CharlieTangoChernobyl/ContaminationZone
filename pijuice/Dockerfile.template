@@ -6,7 +6,7 @@ RUN sed -i '/jessie-updates/{s/^/#/}' /etc/apt/sources.list
 
 RUN apt-get update
 
-RUN install_packages pijuice-base 
+RUN install_packages pijuice-gui
 RUN install_packages jq 
 RUN install_packages curl
 
