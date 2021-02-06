@@ -29,18 +29,8 @@ services:
    privileged: true
    labels:
      io.balena.features.dbus: '1'
-  sh_pijuice:
-    container_name: sh_pijuice
-    build: ./sh_pijuice
-    restart: on-failure
+  pijuice:
+    build: ./pijuice
     privileged: true
-    devices:
-      - "/dev/i2c-1:/dev/i2c-1"
-    volumes:
-      - "cgroup:/sys/fs/cgroup"
-    labels:
-      io.balena.features.supervisor-api: true
-      io.balena.features.dbus: true
-      io.balena.features.kernel-modules: true
-
-  
+    labels: 
+      io.balena.features.balena-api: '1'
