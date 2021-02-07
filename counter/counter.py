@@ -11,7 +11,7 @@ from influxdb import InfluxDBClient
 counts = deque()
 hundredcount = 0
 usvh_ratio = 0.00812037037037 # This is for the J305 tube
-daily_ratio = 0.19488888888 # This is for the J305 tube
+daily_ratio = 0.00812037037037 # This is for the J305 tube
 
 # This method fires on edge detection (the pulse from the counter board)
 def countme(channel):
@@ -117,7 +117,7 @@ while True:
                 'measurement': 'balena-sense',
                 'fields': {
                     'cpm2': int(len(counts2)),
-                    'daily': "{:.2f}".format(len(counts2)*daily_ratio)                    
+                    'daily': "{:.2f}".format(len(counts2)*usvh_ratio)                    
                 }
             }
         ]
