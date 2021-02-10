@@ -6,7 +6,7 @@ RUN pip3 install -r requirements.txt
 # Copy dependencies to run time container
 # Thanks to multi-stage builds, the size of the resulting image is ~70% smaller
 FROM balenalib/raspberrypi3-alpine-python:3-run
-COPY --from=build /usr/local/lib/python3.5/site-packages/ /usr/local/lib/python3.5/site-packages/
+COPY *.py ./
 
 WORKDIR /usr/src/app
 COPY . .
