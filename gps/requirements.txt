@@ -1,0 +1,5 @@
+-i https://pypi.org/simple
+pyserial
+RPi.GPIO
+pynmea2
+geojson

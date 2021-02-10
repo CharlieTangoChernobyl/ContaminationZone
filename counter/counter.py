@@ -11,7 +11,6 @@ from influxdb import InfluxDBClient
 counts = deque()
 hundredcount = 0
 usvh_ratio = 0.00812037037037 # This is for the J305 tube
-daily_ratio = 0.00812037037037 # This is for the J305 tube
 
 # This method fires on edge detection (the pulse from the counter board)
 def countme(channel):
@@ -98,30 +97,4 @@ while True:
     my_tube_r.set_digit(int(text_count[2]))
     
     time.sleep(1)
-    
-# In order to calculate daily dose we need to store a rolling count of events in the last 24 hours
-# This loop runs every second to update the Nixie display and removes elements from the queue that are older than 24 hours
-while True:
-    loop_count = loop_count + 1
-        
-    try:
-        while counts2[0] < datetime.datetime.now() - datetime.timedelta(seconds=86400):
-            counts2.popleft()
-    except IndexError:
-        pass # there are no records in the queue.
-    
-    if loop_count == 10:
-        # Every 10th iteration (10 seconds), store a measurement in Influx
-        measurements = [
-            {
-                'measurement': 'balena-sense',
-                'fields': {
-                    'cpm2': int(len(counts2)),
-                    'daily': "{:.2f}".format(len(counts2)*usvh_ratio)                    
-                }
-            }
-        ]
-        
-        influx_client.write_points(measurements)
-        loop_count = 0
     
