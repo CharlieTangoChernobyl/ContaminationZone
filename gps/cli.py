@@ -2,7 +2,6 @@ import argparse
 import asyncio
 import logging
 
-import serial
 
 logger = logging.getLogger(__name__)
 
