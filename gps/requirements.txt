@@ -2,3 +2,4 @@
 pyserial
 pynmea2
 geojson
+RPi.GPIO
