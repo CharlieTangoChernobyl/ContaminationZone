@@ -2,12 +2,12 @@ version: '2'
 volumes:
     sense-data:
 services:
-  InfluxDB:
+  influxdb:
     restart: always
     build: ./influxdb
     volumes:
       - 'sense-data:/data'
-  Grafana:
+  grafana:
     restart: always
     build: ./grafana
     ports:
@@ -20,11 +20,11 @@ services:
         - 'GF_SESSION_PROVIDER=memory'
     depends_on:
       - influxdb
-  Counter:
+  counter:
     restart: always
     build: ./counter
     privileged: true
-  WiFi:
+  wifi-repeater:
    build: .
    privileged: true
    labels:
@@ -33,7 +33,7 @@ services:
     restart: always
     build: ./gps
     privileged: true
-  PiJuice:
+  pijuice:
     build: ./pijuice
     privileged: true
     labels: 
