@@ -2,12 +2,12 @@ version: '2'
 volumes:
     sense-data:
 services:
-  influxdb:
+  InfluxDB:
     restart: always
     build: ./influxdb
     volumes:
       - 'sense-data:/data'
-  grafana:
+  Grafana:
     restart: always
     build: ./grafana
     ports:
@@ -20,11 +20,11 @@ services:
         - 'GF_SESSION_PROVIDER=memory'
     depends_on:
       - influxdb
-  counter:
+  Counter:
     restart: always
     build: ./counter
     privileged: true
-  wifi-repeater:
+  WiFi:
    build: .
    privileged: true
    labels:
@@ -33,3 +33,8 @@ services:
     restart: always
     build: ./gps
     privileged: true
+  PiJuice:
+    build: ./pijuice
+    privileged: true
+    labels: 
+      io.balena.features.balena-api: '1'
