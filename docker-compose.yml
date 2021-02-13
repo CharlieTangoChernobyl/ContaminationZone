@@ -29,7 +29,3 @@ services:
    privileged: true
    labels:
      io.balena.features.dbus: '1'
-  GPS:
-    restart: always
-    build: ./gps
-    privileged: true
