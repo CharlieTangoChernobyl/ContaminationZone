@@ -33,8 +33,3 @@ services:
     restart: always
     build: ./gps
     privileged: true
-  pijuice:
-    build: ./pijuice
-    privileged: true
-    labels: 
-      io.balena.features.balena-api: '1'
