@@ -13,8 +13,8 @@ from time import *
 counts = deque()
 hundredcount = 0
 usvh_ratio = 0.00812037037037 # This is for the J305 tube
-mylcd = I2C_LCD_driver.lcd()
-mylcd.lcd_display_string("Hello World!", 2, 3)
+#mylcd = I2C_LCD_driver.lcd()
+#mylcd.lcd_display_string("Hello World!", 2, 3)
 
 # This method fires on edge detection (the pulse from the counter board)
 def countme(channel):
