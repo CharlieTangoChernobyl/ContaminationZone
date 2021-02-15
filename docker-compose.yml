@@ -29,3 +29,7 @@ services:
    privileged: true
    labels:
      io.balena.features.dbus: '1'
+  i2c:
+    restart: always
+    build: ./i2c
+    privileged: true
