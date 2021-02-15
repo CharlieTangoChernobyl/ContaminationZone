@@ -5,6 +5,7 @@ FROM resin/%%RESIN_MACHINE_NAME%%-python
 # use apt-get if you need to install dependencies
 RUN apt-get update && apt-get install -yq \
 		python-smbus && \
+        i2c-tools && \
 		apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Set our working directory
