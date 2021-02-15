@@ -5,4 +5,3 @@ RUN pip install spidev RPi.GPIO influxdb
 COPY *.py ./
 
 CMD ["python","counter.py"]
-CMD modprobe i2c-dev && python

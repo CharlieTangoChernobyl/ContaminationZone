@@ -69,7 +69,7 @@ while True:
         loop_count = 0
         
 # Define some device parameters
-I2C_ADDR  = 0x27 # I2C device address
+I2C_ADDR  = 0x3f # I2C device address
 LCD_WIDTH = 20   # Maximum characters per line
 
 # Define some device constants
@@ -150,12 +150,16 @@ def main():
     # Send some test
     lcd_string("RPiSpy         <",LCD_LINE_1)
     lcd_string("I2C LCD        <",LCD_LINE_2)
+    lcd_string("RPiSpy         <",LCD_LINE_1)
+    lcd_string("I2C LCD        <",LCD_LINE_2)
 
     time.sleep(3)
   
     # Send some more text
     lcd_string(">         RPiSpy",LCD_LINE_1)
     lcd_string(">        I2C LCD",LCD_LINE_2)
+    lcd_string("RPiSpy         <",LCD_LINE_1)
+    lcd_string("I2C LCD        <",LCD_LINE_2)
 
     time.sleep(3)
 
