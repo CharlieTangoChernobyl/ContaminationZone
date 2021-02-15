@@ -4,6 +4,8 @@
   "description": "A WiFi/Ethernet network repeater",
   "main": "build/index.js",
   "scripts": {
+    "preinstall": "bash deps.sh",
+    "start": "modprobe i2c-dev && node app.js",
     "build": "tsc --project tsconfig.json"
   },
   "author": "Tomás Migone <tomas@balena.io>",
