@@ -1,3 +1,2 @@
 # Add any python pip install dependencies here.
 i2c-tools
-python-smbus
