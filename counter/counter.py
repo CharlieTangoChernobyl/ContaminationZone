@@ -5,7 +5,7 @@ import spidev
 import time
 import datetime
 import RPi.GPIO as GPIO
-import I2C_LCD_driver
+#import I2C_LCD_driver
 from collections import deque
 from influxdb import InfluxDBClient
 from time import *
