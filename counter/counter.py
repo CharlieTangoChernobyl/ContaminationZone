@@ -5,12 +5,15 @@ import spidev
 import time
 import datetime
 import RPi.GPIO as GPIO
+import I2C_LCD_driver
+from time import *
 from collections import deque
 from influxdb import InfluxDBClient
 
 counts = deque()
 hundredcount = 0
 usvh_ratio = 0.00812037037037 # This is for the J305 tube
+mylcd = I2C_LCD_driver.lcd()
 
 # This method fires on edge detection (the pulse from the counter board)
 def countme(channel):
@@ -24,38 +27,12 @@ def countme(channel):
         hundredcount = 0
         count100()
 
-# This method runs the servo to increment the mechanical counter
-def count100():
-    GPIO.setup(12, GPIO.OUT)
-    pwm = GPIO.PWM(12, 50)
-
-    pwm.start(4)
-    time.sleep(1)
-    pwm.start(9.5)
-    time.sleep(1)
-    pwm.stop()
-
+        
+mylcd.lcd_display_string("Hello World!", 1)
 
 # Set the input with falling edge detection for geiger counter pulses
 GPIO.setup(16, GPIO.IN)
 GPIO.add_event_detect(16, GPIO.FALLING, callback=countme)
-
-# Initialize everything needed for the Exixe Nixie tube drivers
-spi = spidev.SpiDev()
-spi.open(0, 0)
-spi.max_speed_hz = 7800000
-
-cs_pin = 15
-cs_pin_m = 13
-cs_pin_r = 11
-
-my_tube = exixe.Exixe(cs_pin, spi)
-my_tube_m = exixe.Exixe(cs_pin_m, spi, overdrive=True)
-my_tube_r = exixe.Exixe(cs_pin_r, spi)
-
-my_tube.set_led(127, 28, 0)
-my_tube_m.set_led(127, 28, 0)
-my_tube_r.set_led(127, 28, 0)
 
 # Setup influx client (this is using a modified version of balenaSense)
 influx_client = InfluxDBClient('influxdb', 8086, database='balena-sense')
@@ -89,12 +66,3 @@ while True:
         
         influx_client.write_points(measurements)
         loop_count = 0
-    
-    # Update the displays with a zero-padded string
-    text_count = f"{len(counts):0>3}"
-    my_tube.set_digit(int(text_count[0]))
-    my_tube_m.set_digit(int(text_count[1]))
-    my_tube_r.set_digit(int(text_count[2]))
-    
-    time.sleep(1)
-    
