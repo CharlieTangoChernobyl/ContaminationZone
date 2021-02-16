@@ -8,7 +8,6 @@ from twilio.rest import Client
 
 # Start the SDK
 balena = Balena()
-balena.auth.login_with_token(os.environ['BALENA_API_KEY'])
 
 # Wait for device I2C device to start
 while not os.path.exists('/dev/i2c-1'):
