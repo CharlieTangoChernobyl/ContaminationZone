@@ -2,7 +2,7 @@ from time import sleep
 import datetime
 import sys, getopt, os
 sys.path.append('/usr/lib/python3.5/dist-packages') # temporary hack to import the piJuice module
-from pijuice-base import PiJuice
+#from pijuice import PiJuice
 from balena import Balena
 from twilio.rest import Client
 
