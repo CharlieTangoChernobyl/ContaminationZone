@@ -24,7 +24,7 @@ services:
     restart: always
     build: ./counter
     privileged: true
-  wifi-repeater:
+wifi-repeater:
    build: .
    privileged: true
    labels:
