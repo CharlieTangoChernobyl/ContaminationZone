@@ -37,8 +37,8 @@ def count100():
 
 
 # Set the input with falling edge detection for geiger counter pulses
-GPIO.setup(23, GPIO.IN)
-GPIO.add_event_detect(23, GPIO.FALLING, callback=countme)
+GPIO.setup(22, GPIO.IN)
+GPIO.add_event_detect(22, GPIO.FALLING, callback=countme)
 
 # Initialize everything needed for the Exixe Nixie tube drivers
 spi = spidev.SpiDev()
